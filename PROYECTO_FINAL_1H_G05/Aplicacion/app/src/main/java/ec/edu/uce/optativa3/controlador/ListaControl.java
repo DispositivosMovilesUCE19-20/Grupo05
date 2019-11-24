@@ -1,25 +1,30 @@
 package ec.edu.uce.optativa3.controlador;
 
 import android.os.Environment;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
 public class ListaControl {
+    String me="";
     private File fileUsuarios;
     private String carpeta = "/Download/Usuarios";
 
-    public void mensajePut() throws IOException, JSONException {
+    public String mensajePut() throws IOException, JSONException {
         String jsonMensaje = "https://api-rest-grupo05.herokuapp.com/toXml";
 
         String path= (Environment.getExternalStorageDirectory()+this.carpeta);
@@ -54,7 +59,7 @@ public class ListaControl {
 
         JSONArray jrray = new JSONArray(datosDD);
         String estudiantes=jrray.toString();
-
+        String me = "{\"saludo\":{\"hola\"}}";
 
 
         URL url = null;
@@ -67,15 +72,36 @@ public class ListaControl {
         }
         try {
 
+
             conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("POST");
+            conn.setRequestMethod("PUT");
             conn.setDoOutput(true);
             conn.getOutputStream().write(estudiantes.getBytes());
             conn.connect();
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+            String json = "";
+
+            while((inputLine= in.readLine())!=null){
+                response.append(inputLine);
+            }
+            json= response.toString();
+
+            JSONObject js = new JSONObject(json);
+          me = js.getString("response");
+
+
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-
+        return me;
     }
+
+
 }

@@ -131,16 +131,15 @@ public class Lista extends AppCompatActivity {
         });
 
         //Para editar usuarios
-        usuario = findViewById(R.id.txtUsuarioLista);
         editar = (Button) findViewById(R.id.btnEditar);
         editar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent (Lista.this, Editar.class);
-                intent.putExtra("usuario",usuario.getText().toString());
-                startActivity(intent);
+             editar();
             }
         });
+
+
 
     }
 
@@ -177,8 +176,11 @@ public class Lista extends AppCompatActivity {
                 ListaControl lc = new ListaControl();
                 try {
                     lc.mensajePut();
+                    String mm = lc.mensajePut();
+                    Toast.makeText(getApplicationContext(), mm, Toast.LENGTH_LONG).show();
                 } catch (IOException e) {
                     e.printStackTrace();
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -427,6 +429,69 @@ public class Lista extends AppCompatActivity {
                 e.printStackTrace();
             }
             catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+        }
+
+        public void editar(){
+
+            FileWriter fichero = null;
+            PrintWriter pw = null;
+            boolean cont=false;
+            usuario = (TextView) findViewById(R.id.txtUsuarioLista);
+            String name ="usuarios.txt";
+            String us = usuario.getText().toString();
+            String path= (Environment.getExternalStorageDirectory()+this.carpeta);
+            File directorio = new File(path);
+            this.fileUsuarios = new File(directorio,name);
+
+            FileReader fr = null;
+            try {
+                fr = new FileReader(fileUsuarios.toString());
+
+
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
+
+            String datosDD = "";
+
+            int valor = 0;
+            try {
+                valor = fr.read();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            while (valor != -1) {
+                datosDD += ((char) valor);
+                try {
+                    valor = fr.read();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            try {
+                JSONArray jrray = new JSONArray(datosDD);
+                for (int i = 0; i < jrray.length(); i++) {
+                    JSONObject obj = jrray.getJSONObject(i);
+                    if (obj.getString("Usuario").equals(usuario.getText().toString())) {
+                        usuario = findViewById(R.id.txtUsuarioLista);
+                                cont = true;
+                                Intent intent = new Intent (Lista.this, Editar.class);
+                                intent.putExtra("usuario",usuario.getText().toString());
+                                startActivity(intent);
+
+                        break;
+                    }
+                }
+                if(!cont){
+                    Toast.makeText(getApplicationContext(), "No existe ese usuario", Toast.LENGTH_LONG).show();
+                }
+
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
 

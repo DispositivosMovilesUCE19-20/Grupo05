@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="87dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="45dp"
+        android:text="Editar"
+        android:textColor="@color/colorLabel"
+        android:textSize="24dp"
+        android:textStyle="bold" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="590dp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="58dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView20"
+                    android:layout_width="136dp"
+                    android:layout_height="wrap_content"
+                    android:text="                    Nombre:"
+                    android:textColor="@color/colorLabel" />
+
+                <EditText
+                    android:id="@+id/txtNombre"
+                    android:layout_width="219dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Nombre"
+                    android:inputType="textPersonName"
+                    android:textSize="12sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="136dp"
+                    android:layout_height="wrap_content"
+                    android:text="                    Apellido:"
+                    android:textColor="@color/colorLabel" />
+
+                <EditText
+                    android:id="@+id/txtApellido"
+                    android:layout_width="219dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Apellido"
+                    android:inputType="textPersonName"
+                    android:textSize="12sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView22"
+                    android:layout_width="136dp"
+                    android:layout_height="wrap_content"
+                    android:text="                    Email:"
+                    android:textColor="@color/colorLabel" />
+
+                <EditText
+                    android:id="@+id/txtCorreo"
+                    android:layout_width="219dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Correo"
+                    android:inputType="textPersonName"
+                    android:textSize="12sp" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView23"
+                    android:layout_width="136dp"
+                    android:layout_height="wrap_content"
+                    android:text="                    Celular:"
+                    android:textColor="@color/colorLabel" />
+
+                <EditText
+                    android:id="@+id/txtCelular"
+                    android:layout_width="219dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Celular"
+                    android:inputType="phone"
+                    android:textSize="12sp" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="77dp">
+
+                <TextView
+                    android:id="@+id/textView24"
+                    android:layout_width="136dp"
+                    android:layout_height="wrap_content"
+                    android:text="                    Genero:"
+                    android:textColor="@color/colorLabel" />
+
+                <RadioGroup
+                    android:layout_width="208dp"
+                    android:layout_height="match_parent">
+
+                    <RadioButton
+                        android:id="@+id/rbHombre"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Hombre" />
+
+                    <RadioButton
+                        android:id="@+id/rbMujer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Mujer" />
+                </RadioGroup>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="36dp">
+
+                <TextView
+                    android:id="@+id/textView25"
+                    android:layout_width="136dp"
+                    android:layout_height="wrap_content"
+                    android:text="                    Fecha:"
+                    android:textColor="@color/colorLabel" />
+
+                <TextView
+                    android:id="@+id/txtFecha"
+                    android:layout_width="213dp"
+                    android:layout_height="wrap_content"
+                    android:text="Seleccione la Fecha" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="               Asignaturas:"
+                    android:textColor="@color/colorLabel" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <CheckBox
+                    android:id="@+id/cbLenguaje"
+                    android:layout_width="122dp"
+                    android:layout_height="wrap_content"
+                    android:checked="false"
+                    android:text="Lenguaje" />
+
+                <CheckBox
+                    android:id="@+id/cbCiencias"
+                    android:layout_width="106dp"
+                    android:layout_height="wrap_content"
+                    android:text="Ciencias" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <CheckBox
+                    android:id="@+id/cbProgra"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Programación" />
+
+                <CheckBox
+                    android:id="@+id/cbAnalisis"
+                    android:layout_width="104dp"
+                    android:layout_height="wrap_content"
+                    android:text="Análisis" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <CheckBox
+                    android:id="@+id/cbFisica"
+                    android:layout_width="122dp"
+                    android:layout_height="wrap_content"
+                    android:text="Físicia" />
+
+                <CheckBox
+                    android:id="@+id/cbIngles"
+                    android:layout_width="104dp"
+                    android:layout_height="wrap_content"
+                    android:text="Inglés" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="118dp">
+
+                <Switch
+                    android:id="@+id/swBecado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="                    Becado"
+                    android:textColor="@color/colorLabel" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView30"
+                    android:layout_width="104dp"
+                    android:layout_height="wrap_content" />
+
+                <Button
+                    android:id="@+id/btnEditar"
+                    android:layout_width="147dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/colorPrimary"
+                    android:text="EDITAR"
+                    android:textColor="@color/colorLabel" />
+            </TableRow>
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/txtMensaje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="27dp"
+        android:text="No hay conexión a Internet"
+        android:textColor="@color/colorLabel" />
+
+    <TextView
+        android:id="@+id/textView32"
+        android:layout_width="222dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="102dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginEnd="87dp"
+        android:layout_marginBottom="18dp"
+        android:text="@string/pie" />
+
+</RelativeLayout>

@@ -296,7 +296,7 @@ public class RegistroControl extends AppCompatActivity {
         Intent intent = new Intent (RegistroControl.this, MainActivity.class);
         startActivity(intent);
     }else{
-            Toast.makeText(getApplicationContext(),"Tienes que seleccionar al menos 3 materias",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(),"Tienes que seleccionar al menos 3 materias O la contraseña no cumple el estandar",Toast.LENGTH_LONG).show();
         }
     }
 

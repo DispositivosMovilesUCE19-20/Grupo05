@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TAREA_07_GRUPO_05</string>
+    <string name="menuPrincipal">Cerrar Sesión</string>
+    <string name="menuPrincipalVista">LOGIN</string>
+    <string name="salir">Salir</string>
+    <string name="vista1">Menú</string>
+    <string name="password">Ingrese el Password</string>
+    <string name="pie">     Desarollado por Grupo 5</string>
+    <string name="registro">Registro</string>
+</resources>

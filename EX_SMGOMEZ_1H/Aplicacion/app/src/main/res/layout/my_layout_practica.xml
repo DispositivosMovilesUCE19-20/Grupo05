@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo">
+
+    <include
+        android:id="@+id/menu"
+        layout="@layout/menu"
+        app:title="cvxcv">
+
+    </include>
+
+    <Button
+        android:id="@+id/myButton"
+        android:layout_width="154dp"
+        android:layout_height="65dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="234dp"
+        android:layout_marginEnd="193dp"
+        android:layout_marginBottom="432dp"
+        android:text="Presiona" />
+
+    <Button
+        android:id="@+id/myButton2"
+        android:layout_width="154dp"
+        android:layout_height="65dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="230dp"
+        android:layout_marginTop="234dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginBottom="431dp"
+        android:text="Presiona" />
+
+    <TextView
+        android:id="@+id/textIngreso"
+        android:layout_width="89dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="163dp"
+        android:text="Ingresa algo" />
+
+    <EditText
+        android:id="@+id/editIngreso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/menu"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="93dp"
+        android:layout_marginEnd="43dp"
+        android:layout_toEndOf="@+id/textIngreso"
+        android:ems="10"
+        android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/txtResult"
+        android:layout_width="152dp"
+        android:layout_height="48dp"
+        android:layout_below="@+id/textIngreso"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="165dp"
+        android:layout_marginEnd="195dp" />
+</RelativeLayout>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo"
+    android:backgroundTint="@color/fondo">
+
+
+    <TextView
+        android:id="@+id/txtMensaje"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="237dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="16dp"
+        android:text="No hay conexión a Internet"
+        android:textColor="@color/colorLabel"
+        android:textSize="10sp" />
+
+    <include
+        android:id="@+id/menu"
+        layout="@layout/menu"
+        app:title="cvxcv">
+
+    </include>
+
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="18dp"
+        android:text="@string/pie"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txtLista"
+        android:layout_width="204dp"
+        android:layout_height="260dp"
+        android:layout_below="@+id/textView18"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="168dp"
+        android:hint="Lista"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/menu"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="107dp"
+        android:layout_marginTop="33dp"
+        android:text="Lista De Usuarios"
+        android:textColor="@color/colorLabel"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/menu" />
+
+    <EditText
+        android:id="@+id/txtUsuarioLista"
+        android:layout_width="152dp"
+        android:layout_height="51dp"
+        android:layout_below="@+id/txtLista"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="21dp"
+        android:ems="10"
+        android:hint="Ingrese el usuario"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/btnBuscar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtLista" />
+
+    <Button
+        android:id="@+id/btnBuscar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtUsuarioLista"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="125dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="Ver Detalle"
+        android:textColor="@color/colorLabel"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnEditar"
+        android:layout_width="149dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnBuscar"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="64dp"
+        android:layout_toStartOf="@+id/btnBorrar"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="EDITAR"
+        android:textColor="@color/colorLabel"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnBorrar"
+        android:layout_width="116dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnBuscar"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="17dp"
+        android:layout_marginEnd="44dp"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="BORRAR "
+        android:textColor="@color/colorLabel"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btn_ascendente"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="145dp"
+        android:layout_marginEnd="22dp"
+        android:text="Ascendente" />
+
+    <Button
+        android:id="@+id/btn_desc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="261dp"
+        android:layout_marginEnd="23dp"
+        android:text="Descendente" />
+
+</RelativeLayout>

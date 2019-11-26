@@ -1,0 +1,19 @@
+Este servicio se lo creó con Node.js y Express
+para subir el servicio a heroku se tiene que:
+tener una cuenta en heroku
+	crear un nuevo proyecto en heroku.com en su cuenta
+instalar heroku cli en la máquina
+logearse desde heroku cli en el cmd 
+	heroku login
+establecer el proyecto creado anteriormente, como un repositorio remoto
+	heroku git:remote -a nombre_del_proyecto (como se creó en la plataforma de heroku)
+
+instalar git en la máquina
+ ingresar a la carpeta donde está el proyecto a subir 
+	git init para crear un repositorio git
+	git add . para agregar todos los archivos al repositorio local 
+	git commit -am 'mensaje del commit'
+	git push heroku master
+luego en consola se mostrará el mensaje con la URL a la que podemos acceder. 
+si da error ejecutar el comando 
+	heroku logs --tail 

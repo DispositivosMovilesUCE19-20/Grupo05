@@ -56,8 +56,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Calendar;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import ec.edu.uce.optativa3.vista.MainActivity;
 
@@ -155,7 +153,7 @@ public class RegistroControl extends AppCompatActivity {
                 }
             });
 
-//Para guardar
+            //Para guardar
             btnGuardar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -169,103 +167,106 @@ public class RegistroControl extends AppCompatActivity {
     }
 
     private void guardar() {
-        String name ="usuarios.txt";
-        String nameCarpeta ="prueba";
-        String path= (Environment.getExternalStorageDirectory()+this.carpeta);
+        String name = "usuarios.txt";
+        String nameCarpeta = "prueba";
+        String path = (Environment.getExternalStorageDirectory() + this.carpeta);
         File directorio = new File(path);
 
+        clave = (EditText) findViewById(R.id.txtClave);
+        boolean pss = false;
+        pss = validarPwd(clave.getText().toString());
 
-        if(!directorio.exists()){
+
+        if (!directorio.exists()) {
             directorio.mkdirs();
         }
         int num = Comprobar();
-        clave = (EditText) findViewById(R.id.txtClave);
-        if(num>=3&&validarPass(clave.getText().toString())){
+        if (num >= 3 && pss == true) {
 
 
-        String sexo;
-        String materias="";
-        String becaR;
-        usuario = (EditText) findViewById(R.id.txtUsuario);
-        nombre = (EditText) findViewById(R.id.txtNombre);
-        apellido = (EditText) findViewById(R.id.txtApellido);
-        email = (EditText) findViewById(R.id.txtEmail);
-        celular = (EditText) findViewById(R.id.txtCelular);
-        rb1= (RadioButton) findViewById(R.id.rb1);
-        rb2 = (RadioButton) findViewById(R.id.rb2);
-        txtFecha = (TextView) findViewById(R.id.txtFecha);
-        lenguaje = (CheckBox) findViewById(R.id.cbcLenguaje);
-        ciencias = (CheckBox) findViewById(R.id.cbcCiencias);
-        progra = (CheckBox) findViewById(R.id.cbcProgra);
-        analisis = (CheckBox) findViewById(R.id.cbcAnalisis);
-        fisica = (CheckBox) findViewById(R.id.cbcFisica);
-        ingles = (CheckBox) findViewById(R.id.cbcIngles);
-        beca = (Switch) findViewById(R.id.swtBecado);
-        foto = (ImageView) findViewById(R.id.imgFoto);
+            String sexo;
+            String materias = "";
+            String becaR;
+            usuario = (EditText) findViewById(R.id.txtUsuario);
+            clave = (EditText) findViewById(R.id.txtClave);
+            nombre = (EditText) findViewById(R.id.txtNombre);
+            apellido = (EditText) findViewById(R.id.txtApellido);
+            email = (EditText) findViewById(R.id.txtEmail);
+            celular = (EditText) findViewById(R.id.txtCelular);
+            rb1 = (RadioButton) findViewById(R.id.rb1);
+            rb2 = (RadioButton) findViewById(R.id.rb2);
+            txtFecha = (TextView) findViewById(R.id.txtFecha);
+            lenguaje = (CheckBox) findViewById(R.id.cbcLenguaje);
+            ciencias = (CheckBox) findViewById(R.id.cbcCiencias);
+            progra = (CheckBox) findViewById(R.id.cbcProgra);
+            analisis = (CheckBox) findViewById(R.id.cbcAnalisis);
+            fisica = (CheckBox) findViewById(R.id.cbcFisica);
+            ingles = (CheckBox) findViewById(R.id.cbcIngles);
+            beca = (Switch) findViewById(R.id.swtBecado);
+            foto = (ImageView) findViewById(R.id.imgFoto);
 
-        if(beca.isChecked()==true){
-            becaR = "Si";
-        }else{
-            becaR = "No";
-        }
+            if (beca.isChecked() == true) {
+                becaR = "Si";
+            } else {
+                becaR = "No";
+            }
 
-        if(lenguaje.isChecked()==true){
-            materias=materias+lenguaje.getText().toString()+", ";
-        }
-        if(ciencias.isChecked()==true){
-            materias=materias+ciencias.getText().toString()+", ";
-        }
-        if(progra.isChecked()==true){
-            materias=materias+progra.getText().toString()+", ";
-        }
-        if(analisis.isChecked()==true){
-            materias=materias+analisis.getText().toString()+", ";
-        }
-        if(fisica.isChecked()==true){
-            materias=materias+fisica.getText().toString()+", ";
-        }
-        if(ingles.isChecked()==true){
-            materias=materias+ingles.getText().toString()+", ";
-        }
+            if (lenguaje.isChecked() == true) {
+                materias = materias + lenguaje.getText().toString() + ", ";
+            }
+            if (ciencias.isChecked() == true) {
+                materias = materias + ciencias.getText().toString() + ", ";
+            }
+            if (progra.isChecked() == true) {
+                materias = materias + progra.getText().toString() + ", ";
+            }
+            if (analisis.isChecked() == true) {
+                materias = materias + analisis.getText().toString() + ", ";
+            }
+            if (fisica.isChecked() == true) {
+                materias = materias + fisica.getText().toString() + ", ";
+            }
+            if (ingles.isChecked() == true) {
+                materias = materias + ingles.getText().toString() + ", ";
+            }
 
-        if(rb1.isChecked()==true){
-            sexo="Hombre";
+            if (rb1.isChecked() == true) {
+                sexo = "Hombre";
 
-        }else{
-            sexo="Mujer";
-        }
+            } else {
+                sexo = "Mujer";
+            }
 
 
+            String fileName = usuario.getText().toString();
 
-        String fileName= usuario.getText().toString();
+            try {
+                json.put("Usuario", usuario.getText());
+                json.put("Clave", clave.getText());
+                json.put("Nombre", nombre.getText());
+                json.put("Apellido", apellido.getText());
+                json.put("Email", email.getText());
+                json.put("Celular", celular.getText());
+                json.put("Sexo", sexo);
+                json.put("FechaNacimiento", txtFecha.getText());
+                json.put("Materias", materias);
+                json.put("Beca", becaR);
 
-        try {
-            json.put("Usuario", usuario.getText());
-            json.put("Clave", clave.getText());
-            json.put("Nombre", nombre.getText());
-            json.put("Apellido", apellido.getText());
-            json.put("Email", email.getText());
-            json.put("Celular", celular.getText());
-            json.put("Sexo", sexo);
-            json.put("FechaNacimiento", txtFecha.getText());
-            json.put("Materias", materias);
-            json.put("Beca", becaR);
-
-        }catch (JSONException ERROR){}
-        String content =json.toString();
+            } catch (JSONException ERROR) {
+            }
+            String content = json.toString();
 
             //Inicio parara escribir en el archivo
 
-            this.fileUsuarios = new File(directorio,name);
-            if(this.fileUsuarios.exists()){
+            this.fileUsuarios = new File(directorio, name);
+            if (this.fileUsuarios.exists()) {
                 try {
                     escribir(content);
-                }catch(IOException e){
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
 
-            }
-            else if(!this.fileUsuarios.exists()) {
+            } else if (!this.fileUsuarios.exists()) {
                 try {
                     this.fileUsuarios.createNewFile();
 
@@ -280,23 +281,31 @@ public class RegistroControl extends AppCompatActivity {
             //Fin para escribir en el archivo
 
 
-     //   FileOutputStream fileOutputStream = null;
-       // try {
-      //      fileOutputStream = openFileOutput(fileName, Context.MODE_PRIVATE);
+            //   FileOutputStream fileOutputStream = null;
+            // try {
+            //      fileOutputStream = openFileOutput(fileName, Context.MODE_PRIVATE);
 
-     //       fileOutputStream.write(content.getBytes());
-      //      fileOutputStream.close();
-           // Toast.makeText(getApplicationContext(),content, Toast.LENGTH_LONG).show();
-     //   }catch(IOException e){
-     //       e.printStackTrace();
-      //  }
+            //       fileOutputStream.write(content.getBytes());
+            //      fileOutputStream.close();
+            // Toast.makeText(getApplicationContext(),content, Toast.LENGTH_LONG).show();
+            //   }catch(IOException e){
+            //       e.printStackTrace();
+            //  }
 
-        Toast.makeText(getApplicationContext(),"Usuario "+usuario.getText().toString()+" creado satisfactoriamente",Toast.LENGTH_LONG).show();
+            String jsonMensaje = "https://servicioexamen.herokuapp.com/";
 
-        Intent intent = new Intent (RegistroControl.this, MainActivity.class);
-        startActivity(intent);
-    }else{
-            Toast.makeText(getApplicationContext(),"Tienes que seleccionar al menos 3 materias O la contraseña no cumple el estandar",Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Usuario " + usuario.getText().toString() + " jsonMnesaje", Toast.LENGTH_LONG).show();
+
+            Intent intent = new Intent(RegistroControl.this, MainActivity.class);
+            startActivity(intent);
+        } else {
+            if (num < 3) {
+                Toast.makeText(getApplicationContext(), "Tienes que seleccionar al menos 3 materias", Toast.LENGTH_LONG).show();
+            }
+            if (pss == false) {
+                Toast.makeText(getApplicationContext(), "La contraseña no cumple con lo requerido", Toast.LENGTH_LONG).show();
+            }
+
         }
     }
 
@@ -366,30 +375,6 @@ public class RegistroControl extends AppCompatActivity {
 
     }
 
-
-    /**
-     * Metodo para validar
-     *
-     * @return boolean
-     */
-
- private boolean validarPass(String pass){
-     boolean flag =false;
-     int longitud = pass.length();
-String patron =
-
-     if (longitud==8 ){
-         Pattern special = Pattern.compile ("[!@#$%&*()_+=|<>?{}\[\]~-]");
-         Matcher hasSpecial = special.matcher(pass);
-         flag=hasSpecial.find();
-
-     }
-
-
-  return flag;
- }
-
-
 private int Comprobar(){
         int contar=0;
     lenguaje = (CheckBox) findViewById(R.id.cbcLenguaje);
@@ -420,6 +405,50 @@ private int Comprobar(){
     }
         return contar;
 }
+
+    public boolean validarPwd(String pwd){
+
+        // Al menos una letra mayúscula
+        // Al menos una letra minúscula
+        // Al menos 1 numero
+        //Al menos un caracter especial
+        //Que una letra, numero o caracter especial no se repita 3 veces seguidas
+        //Sin espacios entre los caracteres de la contraseña
+        //Mínimo 8 caracteres, máximo 16.
+
+        boolean rtn = true;
+        int seguidos = 0;
+        char ultimo = 0xFF;
+
+        int minuscula = 0;
+        int mayuscula = 0;
+        int numero = 0;
+        int especial = 0;
+        boolean espacio = false;
+        if(pwd.length() < 8 || pwd.length() > 30) return false; // tamaño
+        for(int i=0;i<pwd.length(); i++){
+            char c = pwd.charAt(i);
+            if(c <= ' ' || c > '~' ){
+                rtn = false; //Espacio o fuera de rango
+                break;
+            }
+            if( (c > ' ' && c < '0') || (c >= ':' && c < 'A') || (c >= '[' && c < 'a') || (c >= '{' && c < 127) ){
+                especial++;
+            }
+            if(c >= '0' && c < ':') numero++;
+            if(c >= 'A' && c < '[') mayuscula++;
+            if(c >= 'a' && c < '{') minuscula++;
+
+            seguidos = (c==ultimo) ? seguidos + 1 : 0;
+            if(seguidos >= 2){
+                rtn = false; // 3 seguidos
+                break;
+            }
+            ultimo = c;
+        }
+        rtn = rtn && especial > 0 && numero > 0 && minuscula > 0 && mayuscula > 0;
+        return rtn;
+    }
 
 
 

@@ -1,0 +1,4 @@
+*** WSDL ***
+
+Esta api-rest se la realizó con node js y el módulo de express
+Se lo publicó en la plataforma Heroku.

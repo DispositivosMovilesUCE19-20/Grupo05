@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">2H_TAREA_01_G05</string>
+
+    <string name="txtView_login">LOGIN</string>
+    <string name="txtView_usuario">Usuario: </string>
+    <string name="txtView_password">Password: </string>
+    <string name="txtView_desarrollado">Desarrollado por Grupo 5 </string>
+    <string name="btn_acceder">ACCEDER</string>
+    <string name="btn_registrarse">REGISTRARSE</string>
+    <string name="txtUsuario">Ingrese el Usuario</string>
+    <string name="txtPassword">Ingrese la Contraseña</string>
+    <string name="txtViewRegistro">REGISTRO</string>
+    <string name="txtView_apellido">Apellido: </string>
+    <string name="txtView_nombre">Nombre: </string>
+    <string name="txtView_celular">Celular: </string>
+    <string name="txtView_email">Email: </string>
+    <string name="txtView_fechaNacimiento">Fecha de Nacimiento: </string>
+    <string name="txtView_Genero">Género: </string>
+    <string name="txtView_Asignaturas">Asignaturas: </string>
+    <string name="txtView_Becado">Becado: </string>
+    <string name="txtNombre">Ingrese su Nombre</string>
+    <string name="txtApellido">Ingrese su Apellido</string>
+    <string name="txtEmail">Ingrese su Email</string>
+    <string name="txtCelular">Ingrese su Celular</string>
+
+    <string name="rb1_mujer">Mujer</string>
+    <string name="rb2_hombre">Hombre</string>
+    <string name="selec_fecha">Seleccionar la fecha</string>
+
+    <string name="cbcLenguaje">Lenguaje</string>
+    <string name="cbcCiencias">Ciencias</string>
+    <string name="cbcProgramacion">Progra. </string>
+    <string name="cbcAnálisis">Análisis</string>
+    <string name="cbcFísica">Física</string>
+    <string name="cbcInglés">Inglés</string>
+
+
+    <string name="menúToolBars">Menú</string>
+    <string name="itemCerrarSesion">Cerrar Sesión</string>
+    <string name="itemSalir">Salir</string>
+
+
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
+
+
+</resources>

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "871437339072",
+    "firebase_url": "https://mi-app-grupo5.firebaseio.com",
+    "project_id": "mi-app-grupo5",
+    "storage_bucket": "mi-app-grupo5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:871437339072:android:3851e21a97b81795402025",
+        "android_client_info": {
+          "package_name": "ec.edu.uce.optativa3"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "871437339072-3r20ut5bgnkh513dcufq43di2oaaimkp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC6vYrr2xRCGuLTrTxCHMBLxugSFcy08co"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "871437339072-3r20ut5bgnkh513dcufq43di2oaaimkp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

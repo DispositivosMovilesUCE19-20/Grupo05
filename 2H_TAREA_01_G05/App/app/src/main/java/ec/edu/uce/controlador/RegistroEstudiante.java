@@ -1,0 +1,184 @@
+package ec.edu.uce.controlador;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.DatePickerDialog;
+import android.content.ContentValues;
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.Switch;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.Calendar;
+
+import ec.edu.uce.optativa3.Lista;
+import ec.edu.uce.optativa3.Servicios;
+import ec.edu.uce.optativa3.R;
+import ec.edu.uce.optativa3.SqlLite;
+
+public class RegistroEstudiante extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
+    private TextView date,mensaje;
+    private DatePickerDialog.OnDateSetListener mDateSetListener;
+    private TextView txtFecha;
+    private TextView nombre;
+    private TextView apellido;
+    private TextView celular;
+    private TextView email;
+    private RadioButton hombre;
+    private RadioButton mujer;
+    private CheckBox lenguaje,ciencias,progra,analisis,fisica,ingles;
+    private Switch beca;
+    private Button registroOk;
+
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.registro);
+
+        mensaje= findViewById(R.id.txtMensaje);
+        Servicios mm = new Servicios();
+        String mms= mm.mensaje();
+        mensaje.setText(mms);
+
+        nombre = (EditText) findViewById(R.id.txtNombre);
+        apellido = (EditText) findViewById(R.id.txtApellido);
+        email = (EditText) findViewById(R.id.txtEmail);
+        celular = (EditText) findViewById(R.id.txtCelular);
+        hombre= (RadioButton) findViewById(R.id.rbHombre);
+        mujer = (RadioButton) findViewById(R.id.rbMujer);
+        txtFecha = (TextView) findViewById(R.id.txtFecha);
+        lenguaje = (CheckBox) findViewById(R.id.cbcLenguaje);
+        ciencias = (CheckBox) findViewById(R.id.cbcCiencias);
+        progra = (CheckBox) findViewById(R.id.cbcProgra);
+        analisis = (CheckBox) findViewById(R.id.cbcAnalisis);
+        fisica = (CheckBox) findViewById(R.id.cbcFisica);
+        ingles = (CheckBox) findViewById(R.id.cbcIngles);
+        beca = (Switch) findViewById(R.id.swtBecado);
+        registroOk = (Button) findViewById(R.id.btnGuardar);
+
+
+
+        //Para la fecha
+        date = (TextView) findViewById(R.id.txtFecha);
+        date.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+                Calendar cal = Calendar.getInstance();
+                int anio = Calendar.YEAR;
+                int mes = Calendar.MONTH;
+                int dia = Calendar.DAY_OF_MONTH;
+
+                DatePickerDialog dialog =  new DatePickerDialog(RegistroEstudiante.this,
+                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        mDateSetListener,
+                        anio,mes,dia);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+            }
+        });
+
+        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int anio, int mes, int dia) {
+                mes = mes+1;
+                Log.d(TAG,"onDateSet: date: "+dia+"/"+mes+"/"+anio);
+                String dates  = dia+"/"+mes+"/"+anio;
+                date.setText(dates);
+            }
+        };
+
+        registroOk.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                registroEstu();
+            }
+        });
+    }
+
+    public void registroEstu(){
+        String sexo;
+        String materias="";
+        String becaR;
+        String nombreT,apellidoT,emailT,celularT,fechaT;
+
+        nombreT = nombre.getText().toString();
+        apellidoT = apellido.getText().toString();
+        emailT = email.getText().toString();
+        celularT = celular.getText().toString();
+        fechaT = txtFecha.getText().toString();
+
+
+
+
+        if(beca.isChecked()==true){
+            becaR = "Si";
+        }else{
+            becaR = "No";
+        }
+
+        if(lenguaje.isChecked()==true){
+            materias=materias+lenguaje.getText().toString()+", ";
+        }
+        if(ciencias.isChecked()==true){
+            materias=materias+ciencias.getText().toString()+", ";
+        }
+        if(progra.isChecked()==true){
+            materias=materias+progra.getText().toString()+", ";
+        }
+        if(analisis.isChecked()==true){
+            materias=materias+analisis.getText().toString()+", ";
+        }
+        if(fisica.isChecked()==true){
+            materias=materias+fisica.getText().toString()+", ";
+        }
+        if(ingles.isChecked()==true){
+            materias=materias+ingles.getText().toString()+", ";
+        }
+
+        if(hombre.isChecked()==true){
+            sexo="Hombre";
+
+        }else{
+            sexo="Mujer";
+        }
+
+
+        SqlLite admin = new SqlLite(this,"administracion",null,1);
+        SQLiteDatabase BaseDatos = admin.getWritableDatabase();
+
+
+            ContentValues datosEstudiantes = new ContentValues();
+            datosEstudiantes.put("nombre",nombreT);
+            datosEstudiantes.put("apellido",apellidoT);
+            datosEstudiantes.put("email",emailT);
+            datosEstudiantes.put("celular",celularT);
+            datosEstudiantes.put("genero",sexo);
+            datosEstudiantes.put("fecha",fechaT);
+            datosEstudiantes.put("asignaturas",materias);
+            datosEstudiantes.put("becado",becaR);
+
+
+            BaseDatos.insert("ESTUDIANTES",null,datosEstudiantes);
+            BaseDatos.close();
+
+            Intent intent = new Intent (this, Lista.class );
+            startActivity(intent);
+            Toast.makeText(getApplicationContext(),"Estudiante registrado exitosamente",Toast.LENGTH_SHORT).show();
+
+    }
+}

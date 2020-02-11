@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu  xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menuPrincipal"
+        android:title="@string/itemCerrarSesion" />
+    <item
+        android:id="@+id/salir"
+        android:title="@string/itemSalir" />
+    <item
+        android:id="@+id/ordenarApellido"
+        android:title="Ordenar por apellido" />
+    <item
+        android:id="@+id/ordenarFecha"
+        android:title="Ordenar por fecha" />
+</menu>

@@ -476,4 +476,20 @@ public class Lista extends AppCompatActivity {
         BaseDatos.close();
 
     }
+
+    public boolean validarBeca(String id){
+        SqlLite admin = new SqlLite(this, "administracion", null, 1);
+        SQLiteDatabase BaseDatos = admin.getWritableDatabase();
+
+        Cursor fila = BaseDatos.rawQuery("select becado " +
+                "from ESTUDIANTES where id='" + id + "'", null);
+
+        String beca =fila.getString(0);
+        Toast.makeText(getApplicationContext(), "BECA"+beca, Toast.LENGTH_SHORT).show();
+        if(beca.equals("Si")){
+            return true;
+        }else{
+            return false;
+        }
+    }
 }

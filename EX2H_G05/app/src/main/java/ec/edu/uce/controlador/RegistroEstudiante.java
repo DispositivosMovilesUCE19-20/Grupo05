@@ -112,7 +112,7 @@ public class RegistroEstudiante extends AppCompatActivity {
             public void onDateSet(DatePicker view, int anio, int mes, int dia) {
                 mes = mes+1;
                 Log.d(TAG,"onDateSet: date: "+dia+"/"+mes+"/"+anio);
-                String dates  = dia+"/"+mes+"/"+anio;
+                String dates  = anio+"/"+mes+"/"+dia;
                 date.setText(dates);
             }
         };
@@ -159,7 +159,7 @@ public class RegistroEstudiante extends AppCompatActivity {
             }
         });
 
-        
+
 
         botonCamara.setOnClickListener(new View.OnClickListener() {
             @Override

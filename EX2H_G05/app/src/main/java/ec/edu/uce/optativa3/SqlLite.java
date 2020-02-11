@@ -14,7 +14,7 @@ public class SqlLite extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase Op3) {
         Op3.execSQL("create table USUARIOS( usuario text primary key, password text)");
         Op3.execSQL("create table ESTUDIANTES( " +
-                "id  integer primary key AUTOINCREMENT,nombre text , apellido text, email text , celular text, genero text, fecha text , asignaturas text, becado text,foto text)");
+                "id  integer primary key AUTOINCREMENT,nombre text , apellido text, email text , celular text, genero text, fecha date , asignaturas text, becado text,foto text)");
 
     }
 

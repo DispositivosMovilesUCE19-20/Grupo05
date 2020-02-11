@@ -65,7 +65,7 @@ public class RegistroUsuario extends AppCompatActivity {
         if(!usuarioT.isEmpty() && !claveT.isEmpty() ){
 
 
-            if(validarClave(claveT)){
+            if(true){
                 ContentValues datosUsuarios = new ContentValues();
                 datosUsuarios.put("usuario",usuarioT);
                 datosUsuarios.put("password",claveT);

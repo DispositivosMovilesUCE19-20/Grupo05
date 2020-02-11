@@ -66,7 +66,49 @@ public class Servicios {
 
     }
 
-    //para los logs
+    /* Método para retornar el mensaje de no editar
+     *
+     * @return String mensajeTop
+     */
+    public  String mensajeNoEditar(){
+        String mensajeTop="";
 
+        String jsonMensaje = " https://api-rest-grupo05.herokuapp.com/grupo05/noEditar";
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+        URL url = null;
+        HttpURLConnection conn;
+        try {
+            url = new URL(jsonMensaje);
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.connect();
+            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+            String json = "";
+
+            while((inputLine= in.readLine())!=null){
+                response.append(inputLine);
+            }
+            json= response.toString();
+
+            JSONObject js = new JSONObject(json);
+            mensajeTop=js.getString("msg");
+
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return mensajeTop;
+
+    }
 
 }

@@ -134,7 +134,15 @@ public class Lista extends AppCompatActivity {
         editar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editarEstudiante();
+                if(validarBeca(idEstudiante.getText().toString())){
+                    Servicios mm = new Servicios();
+                    String mms= mm.mensajeNoEditar();
+                    Toast.makeText(getApplicationContext(), mms,Toast.LENGTH_SHORT).show();
+                }else{
+                    editarEstudiante();
+                }
+
+
             }
         });
 
